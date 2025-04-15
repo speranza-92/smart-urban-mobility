@@ -1,0 +1,1 @@
+This file will store log entries from the Traffic light service.
