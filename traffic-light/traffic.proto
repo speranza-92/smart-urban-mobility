@@ -1,0 +1,26 @@
+syntax = "proto3"; // using proto3 because that's the latest version and the one covered in class
+
+package traffic; // this helps group everything under a name 'traffic' for this service
+
+service TrafficLight {
+  rpc ChangeLightStatus (LightRequest) returns (LightResponse); // client sends a request, server sends one reply, standard RPC
+  rpc StreamTrafficConditions (TrafficStreamRequest) returns (stream TrafficStatus); // client sends one request, server keeps sending updates back
+}
+message LightRequest {
+  string intersection_id = 1; // the name or ID of the traffic light eg: junction 5
+  string new_status = 2; // the light status we want to set: "RED" "GREEN" "AMBER"
+}
+
+message LightResponse {
+  string message = 1; // a response message eg:"Light updated successfully"
+  string timestamp = 2; // when the update happened (server can fill this in)
+}
+
+message TrafficStreamRequest {
+  string area_code = 1; // this is the area or zone we want traffic updates eg: "city centre" or a postcode "D4"
+}
+
+message TrafficStatus {
+  string condition = 1; // update on traffic condition eg "Heavy" "Moderate" or "Clear"
+  string update_time = 2; // timestamp for when this particular update was generated
+}

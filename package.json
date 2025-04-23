@@ -1,0 +1,24 @@
+{
+  "name": "smart-urban-mobility",
+  "version": "1.0.0",
+  "description": "Smart Transportation System using gRPC (Node.js)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/speranza-92/smart-urban-mobility.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/speranza-92/smart-urban-mobility/issues"
+  },
+  "homepage": "https://github.com/speranza-92/smart-urban-mobility#readme",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.13.3",
+    "@grpc/proto-loader": "^0.7.15"
+  }
+}
