@@ -1,0 +1,7 @@
+2025-04-30T16:04:59.594Z - Checked spots at Lot A, available: 44
+2025-05-04T18:04:17.631Z - Checked spots at Lot A, available: 44
+2025-05-04T18:19:41.528Z - Checked spots at Lot A, available: 44
+2025-05-04T18:22:45.669Z - Reserved for u1 at Lot A (reg: 12-D-34567)
+2025-05-04T18:22:45.672Z - Checked spots at Lot A, available: 44
+2025-05-04T18:22:45.673Z - Reserved for u2 at Lot A (reg: 15-G-67890)
+2025-05-04T18:22:45.673Z - Reserved for u3 at Lot A (reg: 21-C-99999)

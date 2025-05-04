@@ -1,0 +1,28 @@
+syntax = "proto3"; // using proto3 same as in traffic.proto
+
+package parking; // this groups the service under "parking"
+
+service ParkingService {
+    rpc GetAvailableSpots (SpotRequest) returns (SpotResponse); // unary RPC to check available spaces
+  
+    rpc ReserveMultipleSpots (stream ReservationRequest) returns (ReservationSummary); // client streaming RPC for bulk reservations
+  }
+  message SpotRequest {
+    string location = 1; // eg "lot A" or "City Centre"
+  }
+  
+  message SpotResponse {
+    int32 available_spots = 1; //how many spots are free
+  }
+  
+  message ReservationRequest {
+    string user_id = 1; // eg: user making the reservation
+    string vehicle_reg = 2; // eg: 12-D-34567
+    string location = 3; // where the reservation is being made
+  }
+  
+  message ReservationSummary {
+    int32 total_requested = 1; // how many were sent
+    int32 total_successful = 2; // how many were actually reserved
+  }
+  

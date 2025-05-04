@@ -26,7 +26,7 @@ const trafficService = {
   
     console.log(`Changing light at ${intersection_id} to ${new_status}`); // console log for visibility
   
-    // NEW: log to file
+    // NEW:log to file
     const logEntry = `${new Date().toISOString()} - Changed light at ${intersection_id} to ${new_status}\n`;
     fs.appendFileSync('../logs/traffic_log.txt', logEntry); // write to logs folder (one level up)
   

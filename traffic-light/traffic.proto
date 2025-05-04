@@ -17,7 +17,7 @@ message LightResponse {
 }
 
 message TrafficStreamRequest {
-  string area_code = 1; // this is the area or zone we want traffic updates eg: "city centre" or a postcode "D4"
+  string area_code = 1; // this is the area or zone we want traffic updates eg: "city centre" or a postcode "D8"
 }
 
 message TrafficStatus {

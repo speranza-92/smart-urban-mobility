@@ -16,7 +16,7 @@ const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
 // loads the TrafficLight service from the proto package
 const trafficProto = grpc.loadPackageDefinition(packageDefinition).traffic;
 
-// creates a client to talk to the server at localhost:50051
+// creates a client to talk to the server at localhost 50051
 const client = new trafficProto.TrafficLight(
   'localhost:50051',
   grpc.credentials.createInsecure()
