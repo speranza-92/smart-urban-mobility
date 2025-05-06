@@ -1,0 +1,6 @@
+2025-05-06T17:27:46.437Z - Bus B12 at Stop 1 is On Time
+2025-05-06T17:27:46.441Z - Bus B12 at Stop 2 is Delayed
+2025-05-06T17:27:46.441Z - Bus B12 at Stop 3 is Moving Again
+2025-05-06T17:33:24.903Z - Bus E1 at Stop 1 is On Time
+2025-05-06T17:33:24.906Z - Bus E1 at Stop 2 is Delayed
+2025-05-06T17:33:24.906Z - Bus E1 at Stop 3 is Moving Again

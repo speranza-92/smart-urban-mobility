@@ -1,0 +1,18 @@
+syntax = "proto3"; // using proto3 same as parking proto
+
+package transport; // groups the service under transport
+service TransportService {
+    rpc LiveBusStream (stream BusUpdate) returns (stream BusResponse); // bidirectional stream that can send and receive at the same time
+  }
+  message BusUpdate {
+    string bus_id = 1; // unique ID for the bus (e.g. "E2")
+    string current_location = 2; // e.g. "Dawson Street" or "Stop 24"
+    string status = 3; // e.g. "On Time", "Delayed", "Stopped"
+  }
+  
+  message BusResponse {
+    string message = 1; // response from the server (eg: "Delay acknowledged" "Route updated")
+    string timestamp = 2; // when the server sent the response
+  }
+  
+  
