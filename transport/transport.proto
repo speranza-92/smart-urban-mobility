@@ -5,7 +5,7 @@ service TransportService {
     rpc LiveBusStream (stream BusUpdate) returns (stream BusResponse); // bidirectional stream that can send and receive at the same time
   }
   message BusUpdate {
-    string bus_id = 1; // unique ID for the bus (e.g. "E2")
+    string bus_id = 1; // unique ID for the bus (e.g. "E1")
     string current_location = 2; // e.g. "Dawson Street" or "Stop 24"
     string status = 3; // e.g. "On Time", "Delayed", "Stopped"
   }

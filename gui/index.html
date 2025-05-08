@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Urban Mobility GUI</title>
+</head>
+<body>
+  <!-- GUI for Smart Urban Mobility Project -->
+  <!-- This page lets users interact with gRPC services via Express endpoints -->
+
+  <h1>Smart Urban Mobility Control Panel</h1>
+
+  <!-- Section to update traffic light status using unary RPC -->
+  <section>
+    <h2>Traffic Light</h2>
+    <label for="lightStatus">New Status:</label>
+    <select id="lightStatus">
+      <option>RED</option>
+      <option>YELLOW</option>
+      <option>GREEN</option>
+    </select>
+    <button onclick="changeLight()">Change Light</button>
+    <p id="trafficResponse"></p>
+  </section>
+
+  <!-- Section to check available parking spots using unary RPC -->
+  <section>
+    <h2>Parking</h2>
+    <label for="parkingLocation">Location:</label>
+    <input type="text" id="parkingLocation" value="Lot A">
+    <button onclick="checkParking()">Check Spots</button>
+    <p id="parkingResponse"></p>
+  </section>
+
+  <!-- Section to send a bus update using bi-directional streaming (via POST for simplicity) -->
+  <section>
+    <h2>Transport</h2>
+    <label for="busStatus">Bus Status:</label>
+    <input type="text" id="busStatus" value="On Time">
+    <button onclick="sendBusUpdate()">Send Update</button>
+    <div id="transportResponse"></div>
+  </section>
+
+  <!-- These functions send POST requests to Express routes that internally call the gRPC clients -->
+  <script>
+    async function changeLight() {
+      const status = document.getElementById('lightStatus').value;
+      const res = await fetch('/change-light', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status })
+      });
+      const data = await res.json();
+      document.getElementById('trafficResponse').innerText = data.message;
+    }
+
+    async function checkParking() {
+      const location = document.getElementById('parkingLocation').value;
+      const res = await fetch('/check-parking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ location })
+      });
+      const data = await res.json();
+      document.getElementById('parkingResponse').innerText = `Available: ${data.available_spots}`;
+    }
+
+    async function sendBusUpdate() {
+      const status = document.getElementById('busStatus').value;
+      const res = await fetch('/bus-update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          bus_id: 'E1',
+          current_location: 'Stop A',
+          status
+        })
+      });
+      const data = await res.json();
+      document.getElementById('transportResponse').innerText = data.message;
+    }
+  </script>
+</body>
+</html>

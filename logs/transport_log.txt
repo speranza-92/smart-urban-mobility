@@ -4,3 +4,11 @@
 2025-05-06T17:33:24.903Z - Bus E1 at Stop 1 is On Time
 2025-05-06T17:33:24.906Z - Bus E1 at Stop 2 is Delayed
 2025-05-06T17:33:24.906Z - Bus E1 at Stop 3 is Moving Again
+2025-05-07T18:52:24.557Z - Bus E1 at Stop A is On
+2025-05-07T18:54:37.291Z - Bus E1 at Stop A is delayed
+2025-05-07T18:54:38.219Z - Bus E1 at Stop A is delayed
+2025-05-07T18:54:38.695Z - Bus E1 at Stop A is delayed
+2025-05-07T18:54:38.874Z - Bus E1 at Stop A is delayed
+2025-05-07T18:54:46.172Z - Bus E1 at Stop A is ontime
+2025-05-07T18:55:01.533Z - Bus E1 at Stop A is Delayed
+2025-05-07T19:06:31.894Z - Bus E1 at Stop A is On Time

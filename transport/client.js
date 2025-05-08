@@ -22,22 +22,22 @@ const client = new transportProto.TransportService(
   'localhost:50053',
   grpc.credentials.createInsecure()
 );
-// starts the LiveBusStream bi directional RPC
+
+// gets inputs from GUI (via process.argv)
+const bus_id = process.argv[2] || 'E1';
+const current_location = process.argv[3] || 'Stop A';
+const status = process.argv[4] || 'On Time';
+
+// starts the LiveBusStream bi-directional RPC
 const stream = client.LiveBusStream();
 
-console.log('Starting LiveBusStream...');
+// sends a single update from the GUI
+stream.write({ bus_id, current_location, status });
 
-//sends multiple updates from the client
-stream.write({ bus_id: 'E1', current_location: 'Stop 1', status: 'On Time' });
-stream.write({ bus_id: 'E1', current_location: 'Stop 2', status: 'Delayed' });
-stream.write({ bus_id: 'E1', current_location: 'Stop 3', status: 'Moving Again' });
-
-// listens for responses from the server
+// listens for a single server response
 stream.on('data', (response) => {
-  console.log('Server response:', response.message);
-  console.log('Timestamp:', response.timestamp);
+  console.log(response.message); // GUI-safe response
 });
 
-// ends the stream once all updates are sent
+// ends the stream
 stream.end();
-

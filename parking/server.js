@@ -32,6 +32,9 @@ const parkingService = {
     const logEntry = `${new Date().toISOString()} - Checked spots at ${location}, available: ${availableSpots}\n`;
     fs.appendFileSync('../logs/parking_log.txt', logEntry);
 
+    // added log line for terminal/demo visibility
+    console.log(`Responding to client with availability: ${availableSpots}`);
+
     callback(null, { available_spots: availableSpots });
   },
 
@@ -65,7 +68,7 @@ const parkingService = {
 // creates and starts the gRPC server
 const server = new grpc.Server();
 
-server.addService(parkingProto.ParkingService.service, parkingService); // bind the service logic to proto
+server.addService(parkingProto.ParkingService.service, parkingService); // binds the service logic to proto
 
 server.bindAsync('0.0.0.0:50052', grpc.ServerCredentials.createInsecure(), (err, port) => {
   if (err) {
@@ -75,6 +78,3 @@ server.bindAsync('0.0.0.0:50052', grpc.ServerCredentials.createInsecure(), (err,
 
   console.log(`ParkingService gRPC server running on port ${port}`);
 });
-
-    
-  
